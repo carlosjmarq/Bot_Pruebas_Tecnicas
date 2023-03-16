@@ -1,5 +1,11 @@
+import logging
 from telegram import Update
 from telegram.ext import ContextTypes, CallbackQueryHandler
+
+logging.basicConfig(
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    level=logging.INFO
+)
 
 async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not update.effective_chat or not update.callback_query: return
@@ -12,5 +18,6 @@ async def callback_query_handler(update: Update, context: ContextTypes.DEFAULT_T
     else:
         await context.bot.send_message(chat_id=update.effective_chat.id, text="Parrot says: I cannot handle that action, asshole")
     await context.bot.answer_callback_query(query.id, "feedback message")
+
 
 callback_handler = CallbackQueryHandler(callback_query_handler)

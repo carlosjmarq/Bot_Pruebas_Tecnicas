@@ -1,7 +1,7 @@
 import logging
 import telegram
 from telegram.ext import ApplicationBuilder
-from handlers.callback_handlers import callback_handler
+from handlers.callback_handlers import callback_handler, callback_handler2
 from handlers.command_handlers import start_handler, caps_handler, buttons_handler
 from handlers.message_handlers import echo_handler
 
